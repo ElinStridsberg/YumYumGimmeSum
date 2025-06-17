@@ -6,23 +6,17 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
-  background-image: url('/bg-pattern.png');
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background-image: url('/bg-pattern.png'); /* Bakgrundsbild i public/ */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
   background-attachment: fixed;
-}
-
-
-/* Rubriker och layout */
-h1, h2 {
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-main {
-  padding: 1rem;
+  background-color: #fffdf9; /* fallback */
+  color: #1a1a1a;
+  line-height: 1.6;
 }
 
 /* Navbar */
@@ -45,7 +39,7 @@ nav a:hover {
   text-decoration: underline;
 }
 
-/* Startsida / Home */
+/* Startsida */
 .home {
   text-align: center;
   padding: 2rem 1rem;
@@ -64,100 +58,69 @@ nav a:hover {
   margin: 0 auto 2rem auto;
 }
 
-.cta-btn {
-  padding: 0.75rem 1.5rem;
-  background-color: #ffb347;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.cta-btn:hover {
-  background-color: #ffa726;
-}
-
-/* Meny – Figma-stil */
-.menu h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
+/* Meny - mörk Figma-liknande stil */
 .menu-list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .menu-card {
-  background: #fff5ee;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.menu-card img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.menu-info {
-  padding: 1rem;
-}
-
-.menu-info h3 {
-  margin-bottom: 0.5rem;
-}
-
-.menu-info .price {
-  font-weight: bold;
-  margin: 0.5rem 0;
-}
-
-.menu-info button {
-  padding: 0.5rem 1rem;
-  background-color: #ffb347;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
-}
-
-.menu-info button:hover {
-  background-color: #ffa726;
-}
-
-/* Figma-stil (kompakt menyvariant) */
-.menu-list.compact {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.menu-card.dark {
   background-color: #3f3f3f;
   color: white;
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   font-size: 0.9rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .menu-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
 }
 
-.menu-card.dark p {
-  margin: 0;
-  font-size: 0.85rem;
+.menu-name {
+  letter-spacing: 0.1em;
+  font-size: 1rem;
+  text-transform: uppercase;
+  flex: 1;
+  border-bottom: 1px dotted #bbb;
+  padding-bottom: 0.2rem;
+  margin-right: 0.5rem;
+}
+
+.price {
+  white-space: nowrap;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.menu-description {
+  font-size: 0.8rem;
+  color: #bbb;
+  margin-bottom: 0.8rem;
+  font-style: italic;
+}
+
+.menu-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.menu-tag {
+  background-color: #595959;
   color: #ddd;
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  text-transform: lowercase;
+  cursor: default;
+  user-select: none;
 }
 
 /* Responsivt */
