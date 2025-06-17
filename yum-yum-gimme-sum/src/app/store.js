@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-
-// Tillfällig dummy reducer
-const dummyReducer = (state = {}) => state;
+import authReducer from '../app/authSlice';
+import { apiSlice } from './apiSlice';
 
 export const store = configureStore({
   reducer: {
-    dummy: dummyReducer
+    auth: authReducer,
+    [apiSlice.reducerPath]: apiSlice.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(apiSlice.middleware),
 });

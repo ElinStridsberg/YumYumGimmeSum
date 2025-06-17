@@ -6,13 +6,17 @@ import { store } from './app/store';
 import AppRoutes from './routes/AppRoutes';
 import Navbar from './components/Navbar';
 import "../src/styles/styles.css"
+import App from './App';
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <Navbar />
-        <AppRoutes />
-      </BrowserRouter>
+      <App>
+        <BrowserRouter>
+          {/* <Navbar /> */}
+          <AppRoutes />
+        </BrowserRouter>
+      </App>
     </Provider>
   </StrictMode>
 );
