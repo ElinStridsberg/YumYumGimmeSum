@@ -9,7 +9,12 @@
 
 body {
   font-family: 'Segoe UI', Roboto, sans-serif;
-  background-color: #fffdf9;
+  background-image: url('/bg-pattern.png'); /* Bakgrundsbild i public/ */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  background-color: #fffdf9; /* fallback */
   color: #1a1a1a;
   line-height: 1.6;
 }
@@ -62,31 +67,43 @@ nav a:hover {
 }
 
 .menu-card {
-  background-color: #3f3f3f; /* mörk bakgrund */
+  background-color: #3f3f3f;
   color: white;
   border-radius: 12px;
   padding: 1rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  font-size: 0.9rem;
 }
 
 .menu-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-weight: 700;
-  font-size: 1.1rem;
   margin-bottom: 0.3rem;
-  letter-spacing: 0.03em;
 }
 
-.menu-description {
-  font-size: 0.85rem;
-  color: #bbb;
-  margin-bottom: 0.8rem;
-  font-style: italic;
+.menu-name {
+  letter-spacing: 0.1em;
+  font-size: 1rem;
+  text-transform: uppercase;
+  flex: 1;
+  border-bottom: 1px dotted #bbb;
+  padding-bottom: 0.2rem;
+  margin-right: 0.5rem;
 }
 
 .price {
+  white-space: nowrap;
   font-weight: 700;
+  font-size: 1rem;
+}
+
+.menu-description {
+  font-size: 0.8rem;
+  color: #bbb;
+  margin-bottom: 0.8rem;
+  font-style: italic;
 }
 
 .menu-tags {

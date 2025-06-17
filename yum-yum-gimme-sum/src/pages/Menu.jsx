@@ -1,35 +1,65 @@
-function Menu() {
-  const products = [
-    {
-      id: 1,
-      name: "KARLSTAD",
-      desc: "koriander, vitlökssås, morot, krispig lök",
-      price: 9
-    },
-    {
-      id: 2,
-      name: "BANGKOK",
-      desc: "mango, srirachamayo, chili, koriander",
-      price: 9
-    }
-  ];
+import React from "react";
 
+const sampleMenu = [
+  {
+    id: 1,
+    name: "Karlstad",
+    description: "koriander, vitlökssås, morot, krispig lök",
+    price: 9,
+    tags: ["sweet chili", "thai", "vegetarisk"],
+  },
+  {
+    id: 2,
+    name: "Bangkok",
+    description: "mango, srirachamayo, chili, koriander",
+    price: 9,
+    tags: ["spicy", "sweet & sour", "glutenfri"],
+  },
+  {
+    id: 3,
+    name: "Ho Chi Minh",
+    description: "kål, vitlök, hoisinsås, ingefära, räka",
+    price: 9,
+    tags: ["sweet", "sour", "glutenfri"],
+  },
+  {
+    id: 4,
+    name: "Paris",
+    description: "kål, chévro, honung, basilika, valnöt",
+    price: 9,
+    tags: ["vegetarisk"],
+  },
+  {
+    id: 5,
+    name: "Oaxaca",
+    description: "majá, tomat, rostad vitlök, chili",
+    price: 19,
+    tags: ["spicy", "sweet & sour", "glutenfri"],
+  },
+];
+
+export default function Menu() {
   return (
-    <main className="menu">
+    <main>
       <h2>Meny</h2>
-      <section className="menu-list compact">
-        {products.map((item) => (
-          <article key={item.id} className="menu-card dark">
+      <div className="menu-list">
+        {sampleMenu.map(({ id, name, description, price, tags }) => (
+          <article key={id} className="menu-card">
             <div className="menu-header">
-              <h3>{item.name}</h3>
-              <span>{item.price} SEK</span>
+              <div className="menu-name">{name}</div>
+              <div className="price">{price} SEK</div>
             </div>
-            <p>{item.desc}</p>
+            <p className="menu-description">{description}</p>
+            <div className="menu-tags">
+              {tags.map((tag, i) => (
+                <span key={i} className="menu-tag">
+                  {tag}
+                </span>
+              ))}
+            </div>
           </article>
         ))}
-      </section>
+      </div>
     </main>
   );
 }
-
-export default Menu;
