@@ -61,10 +61,12 @@ nav a:hover {
 
 /* Meny - mörk Figma-liknande stil */
 main {
+  position: relative; /* Viktigt för absolut positionering av header-bar */
   max-width: 400px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
+
 main > h1 {
   border-bottom: none; /* Tar bort linjen under MENY */
   padding-bottom: 0;
@@ -110,6 +112,266 @@ main > h1 {
   text-transform: uppercase;
   position: relative;
 }
+main {
+  position: relative; /* Viktigt för absolut positionering av header-bar */
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.menu-header-bar {
+  position: relative; /* inte absolute */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 400px;
+  margin: 2rem auto 1rem auto; /* centrera horisontellt och ge margin */
+  padding: 0 1rem;
+  color: white;
+  padding-bottom: none
+}
+
+.menu-header-bar h1 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.menu-header-bar .logo {
+  width: 60px;
+  height: auto;
+}
+
+.cart-icon-wrapper {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background-image: url('/cart-bg.png'); /* bakgrundsbubbla */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+.cart-icon-wrapper img {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 26px;
+  height: 26px;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: #ff4b4b;
+  color: white;
+  border-radius: 50%;
+  padding: 0 6px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  min-width: 18px;
+  text-align: center;
+  line-height: 18px;
+  box-shadow: 0 0 2px #000;
+  z-index: 30;
+}
+
+.cart-wrapper {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1.5rem 2rem;
+  background-color: #e5e5e5; /* ljus bakgrund */
+  border-radius: 8px;
+  color: #222;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+.cart-wrapper h1 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.cart-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px dotted #999;
+  font-weight: 600;
+}
+
+.cart-item-name {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.dots {
+  flex-grow: 1;
+  border-bottom: 1px dotted #999;
+  margin: 0 0.5rem;
+  height: 0;
+}
+
+.cart-item-price {
+  flex-shrink: 0;
+  font-weight: 700;
+}
+
+.cart-item-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.btn {
+  background-color: #616060;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  user-select: none;
+}
+
+.btn:hover {
+  background-color: #444;
+}
+
+.btn-remove {
+  background-color: #a94442;
+}
+
+.btn-remove:hover {
+  background-color: #7a2c2c;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  border-top: 1px solid #ccc;
+  padding-top: 1rem;
+}
+
+.total-price {
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+
+.cart-order-btn {
+  width: 100%;
+  background-color: #222;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  margin-top: 1rem;
+  user-select: none;
+}
+
+.cart-order-btn:hover {
+  background-color: #444;
+}
+
+
+.btn-clear {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1.1rem;
+  background-color: #3f3f3f;
+  border-radius: 8px;
+}
+
+.btn-clear:hover {
+  background-color: #2a2a2a;
+}
+
+.cart-item-name {
+  flex-shrink: 0;
+}
+
+.dots {
+  flex-grow: 1;
+  border-bottom: 1px dotted #999;
+  margin: 0 0.5rem;
+}
+
+.cart-item-price {
+  flex-shrink: 0;
+  font-weight: 700;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  border-top: 1px solid #ccc;
+  padding-top: 1rem;
+}
+
+.total-price {
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+
+.cart-order-btn {
+  width: 100%;
+  background-color: #222;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+}
+
+.cart-order-btn:hover {
+  background-color: #444;
+}
+
+.menu-card button {
+  background-color: #ff7043; /* varm orange färg */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.2rem 0.4rem;
+  cursor: pointer;
+  font-weight: 700;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.menu-card button:hover {
+  background-color: #e65c2b;
+}
+
+
 
 /* Prickad linje mellan namn och pris */
 .menu-header::before {
@@ -135,7 +397,6 @@ main > h1 {
 }
 .menu-name, .price {
   background-color: #3f3f3f; /* matchar kortets bakgrund */
-  padding: 0 0.5rem;
   position: relative;
   z-index: 1; /* Så att texten ligger över linjen */
 }
@@ -143,7 +404,7 @@ main > h1 {
 .menu-name {
   white-space: nowrap;
   z-index: 1;
-  background-color: #3f3f3f; /* matcha bakgrunden för att "skära ut" linjen */
+  background-color: #616060;
   padding-right: 0.5rem;
 }
 
@@ -152,7 +413,7 @@ main > h1 {
   font-weight: 700;
   font-size: 1.1rem;
   z-index: 1;
-  background-color: #3f3f3f;
+  background-color: #616060;
   padding-left: 0.5rem;
 }
 
