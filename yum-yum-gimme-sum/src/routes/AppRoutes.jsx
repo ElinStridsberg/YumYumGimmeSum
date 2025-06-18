@@ -1,10 +1,10 @@
 // src/routes/AppRoutes.jsx
 import { Routes, Route } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
-import Menu from '../pages/Menu';
-import Cart from '../pages/Cart';
-import Order from '../pages/Order';
-import Receipt from '../pages/Receipt';
+import Menu from '../features/menu/Menu';
+import Cart from '../features/cart/Cart';
+import Order from '../features/order/Order';
+import Receipt from '../features/receipt/Receipt';
 
 export default function AppRoutes() {
   return (

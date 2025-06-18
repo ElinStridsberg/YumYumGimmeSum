@@ -1,11 +1,11 @@
 import React from 'react';
-import { useGetMenuQuery } from '../app/apiSlice';
+import { useGetMenuQuery } from '../../app/apiSlice';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addItem } from '../app/cartSlice';
+import { addItem } from '../cart/cartSlice';
 
-import '../styles/styles.css'; // CSS för styling
+import '../../styles/styles.css'; // CSS för styling
 
 export default function Menu() {
   const apiKey = useSelector(state => state.auth.apiKey);
