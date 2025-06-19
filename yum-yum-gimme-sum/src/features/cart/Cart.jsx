@@ -1,10 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addItem, removeItem, decrementItem, clearCart } from '../cart/cartSlice';
-
+import { useNavigate } from 'react-router-dom';
 function Cart() {
   const items = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
+  const navigate = useNavigate(); // Definiera navigate
 
   if (items.length === 0) {
     return (
@@ -39,8 +40,13 @@ function Cart() {
         <span>Totalt</span>
         <span className="total-price">{totalPrice} SEK</span>
       </div>
-      <button className="cart-order-btn">TAKE MY MONEY!</button>
-    </main>
+    <button
+      className="cart-order-btn"
+      onClick={() => navigate('/order')}
+    >
+      TAKE MY MONEY!
+    </button> 
+       </main>
   );
 }
 

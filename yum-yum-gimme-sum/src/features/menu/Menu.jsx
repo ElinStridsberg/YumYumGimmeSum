@@ -24,7 +24,7 @@ export default function Menu() {
   if (error) return <div>Ett fel uppstod vid hämtning av menyn</div>;
 
   const menuItems = menu?.items ?? [];
-
+console.log('Menu items:', menuItems);
   return (
     <main>
       <div className="menu-header-bar">
