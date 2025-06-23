@@ -12,7 +12,7 @@ function ETA() {
     if (order?.eta) {
       const etaTime = new Date(order.eta).getTime();
       const now = Date.now();
-      const diffMin = Math.ceil((etaTime - now) / 60000);
+      const diffMin = Math.max(0, Math.ceil((etaTime - now) / 60000));
       setEtaMinutes(diffMin);
     }
   }, [order]);
@@ -20,28 +20,27 @@ function ETA() {
   if (!order) return <p>Ingen order hittades.</p>;
 
   return (
-    <main className="eta-screen" style={{ backgroundColor: '#4f4b4a', color: 'white', padding: '2rem', textAlign: 'center', minHeight: '100vh' }}>
-      <div className="logo" style={{ marginBottom: '1rem' }}>YYGS</div>
-      <img src="/box.png" alt="Wonton-låda" style={{ maxWidth: '200px', margin: '1rem auto' }} />
-      <h1>DINA WONTONS TILLAGAS!</h1>
-      <p>ETA {etaMinutes} MIN</p>
-      <p style={{ fontFamily: 'monospace' }}>#{order.id}</p>
+    <main className="eta-screen">
+      <div className="eta-logo">
+        <img src="../logo.png" alt="Yum Yum Gimme Sum" className="eta-logo-image" />
+      </div>
+      <img src="../wonton.png" alt="Wonton-låda" className="eta-image" />
+      <h1 className="eta-heading">DINA WONTONS TILLAGAS!</h1>
+      <p className="eta-text">ETA {etaMinutes} MIN</p>
+      <p className="eta-code">#{order.id}</p>
+  
+      <div className="eta-buttons">
+        <button className="eta-btn btn-primary" onClick={() => navigate('/order')}>
+          GÖR EN NY BESTÄLLNING
+        </button>
+        <button className="eta-btn btn-secondary" onClick={() => navigate('/receipt', { state: { order } })}>
+          SE KVITTO
+        </button>
+      </div>
 
-      <button
-        style={{ marginTop: '2rem', padding: '1rem', backgroundColor: '#111', color: '#fff', width: '100%', fontWeight: 'bold' }}
-        onClick={() => navigate('/cart')}
-      >
-        GÖR EN NY BESTÄLLNING
-      </button>
-
-      <button
-        style={{ marginTop: '1rem', padding: '1rem', backgroundColor: '#d9d9d9', color: '#222', width: '100%', fontWeight: 'bold' }}
-        onClick={() => navigate('/receipt', { state: { order } })}
-      >
-        SE KVITTO
-      </button>
     </main>
   );
+  
 }
 
 export default ETA;
