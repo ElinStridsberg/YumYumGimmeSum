@@ -24,12 +24,11 @@ export default function Menu() {
   if (error) return <div>Ett fel uppstod vid hämtning av menyn</div>;
 
   const menuItems = menu?.items ?? [];
-console.log('Menu items:', menuItems);
   return (
     <main>
       <div className="menu-header-bar">
         <img src="/logo.png" alt="Yum Yum Gimme Sum" className="logo" />
-        <Link to="/cart" className="cart-icon-wrapper">
+        <Link to="/order" className="cart-icon-wrapper">
           <img src="/cart-icon.png" alt="Varukorg" />
           {cartItemsCount > 0 && <span className="cart-count">{cartItemsCount}</span>}
         </Link>

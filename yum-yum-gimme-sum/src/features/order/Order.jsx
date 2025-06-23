@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useCreateTenantMutation, usePlaceOrderMutation } from '../tenant/tenantSlice';
-import { clearCart } from '../cart/cartSlice';
+import { addItem, removeItem, decrementItem, clearCart } from '../cart/cartSlice';
 import { useNavigate } from 'react-router-dom';
+import { useCreateTenantMutation, usePlaceOrderMutation } from '../tenant/tenantSlice';
 
-export default function Order() {
-  const [tenant, setTenant] = useState(null);
-  const apiKey = useSelector((state) => state.auth.apiKey);
-  const cartItems = useSelector((state) => state.cart.items);
+function Cart() {
+  const items = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [tenant, setTenant] = useState(null);
 
   const [createTenant] = useCreateTenantMutation();
-  const [placeOrder, { error: orderError }] = usePlaceOrderMutation();
+  const [placeOrder] = usePlaceOrderMutation();
 
   useEffect(() => {
     const initTenant = async () => {
@@ -42,19 +41,14 @@ export default function Order() {
     initTenant();
   }, [createTenant]);
 
-  const totalPrice = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
-
   const handleOrder = async () => {
-    if (!tenant?.id || cartItems.length === 0) {
+    if (!tenant?.id || items.length === 0) {
       alert('Kunde inte lägga beställning. Kontrollera API-nyckel och varukorg.');
       return;
     }
 
     const order = {
-      items: cartItems.flatMap(({ id, quantity }) => Array(quantity).fill(id)),
+      items: items.flatMap(({ id, quantity }) => Array(quantity).fill(id)),
     };
 
     try {
@@ -67,24 +61,50 @@ export default function Order() {
     }
   };
 
-  if (!tenant) return <p>Hämtar tenant...</p>;
+  if (items.length === 0) {
+    return (
+      <main className="order-wrapper">
+        <h1>Min beställning</h1>
+        <p>Din varukorg är tom.</p>
+      </main>
+    );
+  }
+
+  const totalPrice = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <main>
-      <h1>Beställning</h1>
-      <p>Foodtruck: {tenant.name}</p>
-      <ul>
-        {cartItems.map(({ id, name, price, quantity }) => (
-          <li key={id}>
-            {name} × {quantity} = {price * quantity} SEK
+    <main className="order-wrapper">
+      <div className="cart-header-bar">
+        <img src="/arrow.png" alt="Tillbaka" className="nav-icon left" onClick={() => navigate('/menu')} />
+        <img src="/cart-icon.png" alt="Varukorg" className="nav-icon right" />
+      </div>
+      <ul className="order-list">
+        {items.map(({ id, name, price, quantity }) => (
+          <li key={id} className="order-item">
+            <span className="item-name">
+            {name.toUpperCase()} × {quantity}            
+            </span>
+            <span className="dots"></span>
+            <span className="item-price">{price * quantity} SEK</span>
+            <div className="item-actions">
+              <button className="btn btn-qty" onClick={() => dispatch(decrementItem(id))}>−</button>
+              <button className="btn btn-qty" onClick={() => dispatch(addItem({ id, name, price }))}>+</button>
+              <button className="btn btn-remove" onClick={() => dispatch(removeItem(id))}>🗑</button>
+            </div>
           </li>
         ))}
       </ul>
-      <p>
-        <strong>Totalt: {totalPrice} SEK</strong>
-      </p>
-      <button onClick={handleOrder}>Bekräfta beställning</button>
-      {orderError && <p style={{ color: 'red' }}>Fel vid beställning</p>}
+      <div className="order-footer">
+        <div className="order-total-bar">
+          <span>TOTALT</span>
+          <span>{totalPrice} SEK</span>
+        </div>
+        <button className="cart-order-btn" onClick={handleOrder}>
+          TAKE MY MONEY!
+        </button>
+      </div>
     </main>
   );
 }
+
+export default Cart;
