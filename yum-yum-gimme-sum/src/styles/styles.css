@@ -5,6 +5,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+
+  
 }
 
 body {
@@ -417,6 +423,183 @@ main {
   margin: 0;
 }
 
+/* RECEIPT */
+
+.receipt-screen {
+  background-color: #4f4b4a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  color: #1a1a1a;
+  max-width: 400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+}
+
+.receipt-box {
+  background-color: #EEEEEE;
+  padding: 2rem 1.5rem;
+  border-radius: 6px 6px 0 0; /* rundade hörn nere */
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  margin-top: 7rem;
+  color: #353131;
+}
+
+.receipt-box-logo {
+  width: 45px;
+  margin: 0 auto 0.5rem;
+  display: block;
+}
+
+.receipt-items {
+  margin-top: 1rem;
+}
+
+.receipt-row {
+  padding: 0.7rem 0 0.3rem;
+}
+
+.receipt-box-header {
+  text-align: center;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #353131;
+
+  display: inline;
+  
+}
+.receipt-box h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  
+}
+
+.order-id {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #444;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  margin-top: 0;
+}
+
+.receipt-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 0.2rem;
+}
+
+.receipt-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 60%;
+  border-bottom: 3px dotted #585656;
+  z-index: 0;
+}
+
+.item-name,
+.item-price {
+  background-color: #EEEEEE;
+  position: relative;
+  z-index: 1;
+  padding: 0 0.4rem;
+}
+
+.item-qty {
+  font-size: 0.85rem;
+  color: #444;
+  margin-left: 0.4rem;
+}
+.receipt-total {
+  width: 100%;
+  max-width: 360px;
+  background-color: #bcbbbb;
+  padding: 1rem 1.2rem;
+  border-radius: 0 0 6px 6px;
+  margin-top: -2px;
+  margin-bottom: 7rem;
+  box-sizing: border-box;
+  color: #353131;
+
+}
+
+.total-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #1a1a1a;
+}
+
+.label-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #353131;
+
+}
+
+.label {
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.moms {
+  font-size: 0.75rem;
+  color: #666;
+  margin-top: 0.2rem;
+  line-height: 1.2;
+}
+
+.value {
+  align-self: center;
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-top: 0.2rem;
+  color: #353131;
+
+}
+
+
+
+.eta-btn.btn-primary {
+  font-size: 1rem;
+  padding: 1.2rem;
+  width: 100%;
+  max-width: 360px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: #222;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+
+.eta-btn.btn-primary:hover {
+  background-color: #444;
+}
+
+
 /* CART */
 .cart-order-btn {
   width: 100%;
@@ -530,6 +713,8 @@ main {
   background-color: transparent;
   color: #dcdcdc;
   border: 2px solid #a5a5a5;
+  margin-bottom: 10px;
+
 }
 
 .btn-secondary:hover {

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../cart/cartSlice';
 
-import '../../styles/styles.css'; // CSS för styling
+import '../../styles/styles.css';
 
 export default function Menu() {
   const apiKey = useSelector(state => state.auth.apiKey);

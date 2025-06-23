@@ -30,7 +30,7 @@ function ETA() {
       <p className="eta-code">#{order.id}</p>
   
       <div className="eta-buttons">
-        <button className="eta-btn btn-primary" onClick={() => navigate('/order')}>
+        <button className="eta-btn btn-primary" onClick={() => navigate('/menu')}>
           GÖR EN NY BESTÄLLNING
         </button>
         <button className="eta-btn btn-secondary" onClick={() => navigate('/receipt', { state: { order } })}>

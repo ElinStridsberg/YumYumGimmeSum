@@ -54,7 +54,7 @@ function Cart() {
     try {
       const result = await placeOrder({ tenantId: tenant.id, order }).unwrap();
       dispatch(clearCart());
-      navigate('/eta', { state: { order: result.order } });
+      navigate('/eta', { state: { order: { ...result.order, items } } });
     } catch (err) {
       console.error('Orderfel:', err);
       alert(`Kunde inte lägga beställning: ${err?.data?.message || 'Okänt fel'}`);
