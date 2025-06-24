@@ -1,29 +1,81 @@
 import React from 'react';
 import { useGetMenuQuery } from '../../app/apiSlice';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { addItem } from '../cart/cartSlice';
-
+import { addItem, removeItem } from '../cart/cartSlice';
 import '../../styles/styles.css';
 
 export default function Menu() {
   const apiKey = useSelector(state => state.auth.apiKey);
-  const cartItemsCount = useSelector(state =>
-    state.cart.items.reduce((total, item) => total + item.quantity, 0)
-  );
-
-  const { data: menu, error, isLoading } = useGetMenuQuery(undefined, {
-    skip: !apiKey,
-  });
+  const cartItems = useSelector(state => state.cart.items);
+  const cartItemsCount = cartItems.reduce((t, i) => t + i.quantity, 0);
+  const { data: menu, error, isLoading } = useGetMenuQuery(undefined, { skip: !apiKey });
   const dispatch = useDispatch();
 
-
-  if (!apiKey) return <div>Laddar API-nyckel...</div>;
-  if (isLoading) return <div>Laddar menyn...</div>;
+  if (!apiKey) return <div>Laddar API‑nyckel…</div>;
+  if (isLoading) return <div>Laddar menyn…</div>;
   if (error) return <div>Ett fel uppstod vid hämtning av menyn</div>;
 
-  const menuItems = menu?.items ?? [];
+  const items = menu?.items ?? [];
+  const mains = items.filter(item => item.type === 'wonton');
+  const sauces = items.filter(item => item.type === 'dip');
+  const drinks = items.filter(item => item.type === 'drink');
+
+  const renderMainItem = ({ id, name, price, ingredients }) => {
+    const cartItem = cartItems.find(ci => ci.id === id);
+
+    return (
+      <article
+        key={id}
+        className={`menu-card clickable${cartItem ? ' selected' : ''}`}
+        onClick={() =>
+          cartItem ? dispatch(removeItem(id)) : dispatch(addItem({ id, name, price }))
+        }
+      >
+        <div className="menu-header">
+          <div className="menu-name">{name.toUpperCase()}</div>
+          <div className="price">{price} SEK</div>
+        </div>
+        <div className="menu-tags">
+          {Array.isArray(ingredients)
+            ? ingredients.map((ing, i) => (
+                <span key={i} className="menu-tag">
+                  {ing}
+                  {i < ingredients.length - 1 ? ', ' : ''}
+                </span>
+              ))
+            : <span className="menu-tag">Inga ingredienser</span>}
+        </div>
+        {cartItem && <span className="menu-check">✔</span>}
+      </article>
+    );
+  };
+
+  const renderSimpleGrid = (items, sectionTitle, price) => (
+    <>
+      <div className="simple-grid-header">
+        <h2 className="section-title">{sectionTitle}</h2>
+        <span className="grid-price">{price} SEK</span>
+      </div>
+      <div className="simple-grid">
+        {items.map(({ id, name, price }) => {
+          const isSelected = cartItems.some(ci => ci.id === id);
+          return (
+            <span
+              key={id}
+              className={`grid-item ${isSelected ? 'selected' : ''}`}
+              onClick={() =>
+                isSelected ? dispatch(removeItem(id)) : dispatch(addItem({ id, name, price }))
+              }
+            >
+              {name.toLowerCase()}
+            </span>
+          );
+        })}
+      </div>
+    </>
+  );
+
   return (
     <main>
       <div className="menu-header-bar">
@@ -37,31 +89,13 @@ export default function Menu() {
       <div className="menu-wrapper">
         <h1>MENY</h1>
         <div className="menu-list">
-          {menuItems.length === 0 && <p>Ingen meny tillgänglig</p>}
-          {menuItems.map(({ id, name, description, price, ingredients }) => (
-            <article key={id} className="menu-card">
-              <div className="menu-header">
-                <div className="menu-name">{name}</div>
-                <div className="price">{price} SEK</div>
-              </div>
-              <p className="menu-description">{description}</p>
-              <div className="menu-tags">
-              {Array.isArray(ingredients) ? (
-  <>
-    {ingredients.map((ingredient, i) => (
-      <span key={i} className="menu-tag">{ingredient}</span>
-    ))}
-    <button onClick={() => dispatch(addItem({ id, name, price }))}>
-      +
-    </button>
-  </>
-) : (
-  <span>Inga ingredienser tillgängliga</span>
-)}
+          {mains.map(renderMainItem)}
 
-              </div>
-            </article>
-          ))}
+          {sauces.length > 0 &&
+            renderSimpleGrid(sauces, 'DIPSÅS', 19)}
+
+          {drinks.length > 0 &&
+            renderSimpleGrid(drinks, 'DRICKA', 25)}
         </div>
       </div>
     </main>
