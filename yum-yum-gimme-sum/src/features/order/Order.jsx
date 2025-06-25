@@ -63,18 +63,18 @@ function Order() {
 
   if (items.length === 0) {
     return (
-<main className="order-wrapper">
-  <div className="empty-cart">
-    <h2>Din varukorg är tom.</h2>
-    <p>Gå tillbaka till menyn</p>
-    <img src="/arrow.png" alt="Tom varukorg" className='arrowEmptyCart'           onClick={() => navigate('/menu')}
-    />
+    <main className="order-wrapper">
+      <div className="empty-cart">
+        <h2>Din varukorg är tom.</h2>
+        <p>Gå tillbaka till menyn</p>
+        <img src="/arrow.png" alt="Tom varukorg" className='arrowEmptyCart'           onClick={() => navigate('/menu')}
+        />
 
-  </div>
-</main>
+      </div>
+    </main>
 
-    );
-  }
+        );
+      }
 
   const totalPrice = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 

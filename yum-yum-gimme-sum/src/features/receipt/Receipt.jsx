@@ -48,8 +48,6 @@ export default function Receipt() {
   </div>
 </div>
 
-
-  
       <button className="eta-btn btn-primary" onClick={() => navigate('/')}>
         GÖR EN NY BESTÄLLNING
       </button>

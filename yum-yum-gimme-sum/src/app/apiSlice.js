@@ -6,7 +6,6 @@ export const apiSlice = createApi({
     baseUrl: 'https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com',
     prepareHeaders: (headers, { getState }) => {
       const apiKey = getState().auth.apiKey;
-      console.log('API key in headers:', apiKey);
       if (apiKey) {
         headers.set('x-zocom', apiKey);
       }

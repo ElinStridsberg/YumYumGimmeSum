@@ -20,7 +20,7 @@ export const tenantApi = createApi({
     }),
     placeOrder: builder.mutation({
       query: ({ tenantId, order }) => ({
-        url: `/${tenantId}/orders`, // korrekt enligt API
+        url: `/${tenantId}/orders`,
         method: 'POST',
         body: order,
       }),

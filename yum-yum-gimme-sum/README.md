@@ -1,12 +1,36 @@
-# React + Vite
+# 🍜 Yum Yum Gimme Sum
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ett meny- och beställningsgränssnitt för en fiktiv restaurang där användare kan lägga till produkter i en varukorg, göra en beställning och få kvitto på köpet. Projektet är skapat som en del av kursen React.js.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📋 Funktionalitet
+- ✅ Hämta och visa meny via API
+- ✅ Lägg till och ta bort produkter i varukorgen
+- ✅ Ändra antal i varukorgen
+- ✅ Skicka beställning och få ETA + ordernummer
+- ✅ Visa kvitto efter beställning
+- ✅ Responsivt och användarvänligt gränssnitt
+- ✅ Navigering mellan vyer (meny, varukorg, beställning, kvitto)
 
-## Expanding the ESLint configuration
+---
+## 🧪 Använda tekniker
+⚛️ React
+🛠️ Redux Toolkit + RTK Query
+🌐 Axios/Fetch (RTK Query)
+🧭 React Router
+🎨 CSS Modules + global styling
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📦 Installation
+git clone https://github.com/ditt-användarnamn/yum-yum-gimme-sum.git
+cd yum-yum-gimme-sum
+npm install
+npm run dev
+
+## 🔐 API-nyckel & Tenant
+ - API-nyckel hämtas automatiskt vid uppstart via RTK Query.
+ - Tenant (ElinsFoodtruck) skapas eller återanvänds automatiskt och   lagras i localStorage.
+
+ ## 🖼️ UI
+ - Designen följer den tillhandahållna skissen. 
+ - Mobilanpassad för skärmstorlek <600px.

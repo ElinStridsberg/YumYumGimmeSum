@@ -53,6 +53,8 @@ main > h1 {
   padding-bottom: 0;
   margin-bottom: 1rem;
 }
+
+
 /* menu styling */
 .menu-wrapper {
   background-color: #616060;
@@ -76,11 +78,9 @@ main > h1 {
   cursor: pointer;
 }
 
-
 .menu-card:last-child {
   border-bottom: none;
 }
-
 
 .menu-header {
   display: flex;
@@ -124,12 +124,9 @@ main > h1 {
   font-weight: bold;
 }
 
-
 .menu-card.selected .menu-name,
 .menu-card.selected .price {
   color: white;
-  
-  
 }
 
 .menu-card.clickable.added .menu-check {
@@ -223,12 +220,12 @@ main {
 }
 
 .menu-header-bar {
-  position: relative; /* inte absolute */
+  position: relative; 
   display: flex;
   align-items: center;
   justify-content: space-between;
   max-width: 400px;
-  margin: 2rem auto 1rem auto; /* centrera horisontellt och ge margin */
+  margin: 2rem auto 1rem auto;
   padding: 0 1rem;
   color: white;
   padding-bottom: none
@@ -286,7 +283,6 @@ main {
   color: #555;
 }
 
-
 .cart-icon-wrapper img {
   position: absolute;
   top: 15px;
@@ -329,8 +325,6 @@ main {
   background-color: #444;
 }
 
-
-
 .menu-card.selected .menu-name,
 .menu-card.selected .price {
   color: #fff;
@@ -354,7 +348,7 @@ main {
 .menu-header::after {
   content: "";
   position: absolute;
-  top: 50%; /* Vertikalt centrerad */
+  top: 50%;
   left: 0;
   right: 0;
   border-bottom: 3px dotted #bbb;
@@ -368,7 +362,6 @@ main {
   padding: 0 0.3rem;
   white-space: nowrap;
   text-shadow: 1px 1px 1px #000;
-
 }
 
 .menu-name {
@@ -379,9 +372,8 @@ main {
   padding-bottom: 0;
   margin-bottom: 0;
   padding-left: 0rem;
-
-
 }
+
 .price {
   white-space: nowrap;
   font-weight: 700;
@@ -408,15 +400,13 @@ main {
   margin: 0; 
   font-size: 0.7rem;
   color: #ddd;
-  text-shadow: 1px 1px 1px #000;
+  text-shadow: 1px 1px 1px #3e3e3e;
   font-weight: 300; 
   letter-spacing: -0.3px; 
-
 }
 
 .menu-tag {
   padding-right: 0.3rem; 
-
 }
 
 .cart-header-bar {
@@ -444,10 +434,9 @@ main {
   width: 30px;
   height: 30px;
 }
-/* Specifikt för order-vyn */
 .order-wrapper {
   background-color: #e2e1e1;
-  padding: 2rem 1rem 2rem; /* Minska från 6rem eller 10rem i bottom-padding */
+  padding: 2rem 1rem 2rem; 
   min-height: 100vh;
   max-width: 400px;
   margin: 0 auto;
@@ -460,21 +449,19 @@ main {
   flex-grow: 1;
   overflow-y: auto;
   padding-top: 50px;
-  padding-bottom: 4rem; /* För att ge plats för footer */
-  
+  padding-bottom: 4rem;  
 }
+
 .order-item {
   display: flex;
   align-items: center;
   font-weight: 700;
   padding: 0.6rem 0;
   font-size: 1rem;
-  
 }
 
 .order-list .item-name{
   background-color: #e2e1e1;
-
 }
 
  .order-list .item-price {
@@ -484,8 +471,6 @@ main {
 .item-name {
   flex-shrink: 0;
   white-space: nowrap;
-  
-  
 }
 
 .item-price {
@@ -499,7 +484,7 @@ main {
   border-bottom: 3px dotted #999;
   margin: 0 0.5rem;
   height: 1;
-  transform: translateY(0.4em); /* 🔥 justerar vertikalt till textnivå */
+  transform: translateY(0.4em);
 }
 
 .item-actions {
@@ -509,7 +494,6 @@ main {
   margin-left: 0.5rem;
   margin-right: none;
   background-color: #e2e1e1;
-
 }
 
 .btn-qty {
@@ -541,9 +525,8 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateY(-2px); /* 🔥 flyttar knappen uppåt lite */
+  transform: translateY(-2px);
 }
-
 
 .btn-remove:hover {
   background-color: #7a2c2c;
@@ -567,7 +550,6 @@ main {
   background-color: #d9d9d9;
   font-weight: 800;
   font-size: 1.2rem;
-
   margin: 0;
 }
 
@@ -583,7 +565,6 @@ main {
   max-width: 400px;
   margin: 0 auto;
   box-sizing: border-box;
-
 }
 
 .receipt-box {
@@ -605,8 +586,6 @@ main {
 .receipt-items {
   margin-top: 1rem;
     background-color: #EEEEEE;
-
-  
 }
 
 .receipt-row {
@@ -619,10 +598,9 @@ main {
   font-weight: 400;
   font-style: normal;
   color: #353131;
-
   display: inline;
-  
 }
+
 .receipt-box h2 {
   text-align: center;
   font-size: 1.5rem;
@@ -631,7 +609,6 @@ main {
   font-family: "Fira Sans", sans-serif;
   font-weight: 700;
   font-style: normal;
-  
 }
 
 .order-id {
@@ -653,7 +630,6 @@ main {
   line-height: 1.4;
   margin-bottom: 0.2rem;
   background-color: #EEEEEE;
-
 }
 
 .receipt-line::before {
@@ -664,7 +640,6 @@ main {
   top: 60%;
   border-bottom: 3px dotted #585656;
   background-color: #EEEEEE;
-
   z-index: 0;
 }
 
@@ -691,7 +666,6 @@ main {
   margin-bottom: 7rem;
   box-sizing: border-box;
   color: #353131;
-
 }
 
 .total-line {
@@ -708,7 +682,6 @@ main {
   flex-direction: column;
   justify-content: space-between;
   color: #353131;
-
 }
 
 .label {
@@ -729,10 +702,7 @@ main {
   font-weight: 800;
   margin-top: 0.2rem;
   color: #353131;
-
 }
-
-
 
 .eta-btn.btn-primary {
   font-size: 1rem;
@@ -749,11 +719,9 @@ main {
   box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
-
 .eta-btn.btn-primary:hover {
   background-color: #444;
 }
-
 
 /* CART */
 .cart-order-btn {
@@ -855,6 +823,7 @@ main {
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
+
 .btn-primary {
   background-color: #222;
   color: white;
@@ -869,14 +838,11 @@ main {
   color: #dcdcdc;
   border: 2px solid #a5a5a5;
   margin-bottom: 10px;
-
 }
 
 .btn-secondary:hover {
   background-color: #3c3c3c;
 }
-
-
 
 /* Responsivt */
 @media (min-width: 600px) {
