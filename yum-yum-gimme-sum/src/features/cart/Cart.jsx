@@ -1,49 +1,29 @@
-// import React from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { addItem, removeItem, decrementItem, clearCart } from '../cart/cartSlice';
-// import { useNavigate } from 'react-router-dom';
-// function Cart() {
-//   const items = useSelector(state => state.cart.items);
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate(); // Definiera navigate
+// src/features/cart/Cart.jsx
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addItem, decrementItem, removeItem } from './cartSlice';
 
-//   if (items.length === 0) {
-//     return (
-//       <main className="cart-wrapper">
-//         <h1>Min beställning</h1>
-//         <p>Din varukorg är tom.</p>
-//       </main>
-//     );
-//   }
+function Cart({ items }) {
+  const dispatch = useDispatch();
 
-  
-//   const totalPrice = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  if (items.length === 0) return null;
 
-  
-//   return (
-//     <main className="cart-wrapper">
-//       <h1>Min beställning</h1>
-//       <ul className="cart-list">
-//   {items.map(({ id, name, price, quantity }) => (
-//     <li key={id} className="cart-item-line">
-//       <span className="cart-item-name">{name}</span>
-//       <span className="dots"></span>
-//       <span className="cart-item-price">{price * quantity} SEK</span>
-//     </li>
-//   ))}
-// </ul>
-// <div className='buttons'>
-//   <div className="cart-total">
-//     <span>TOTALT</span>
-//     <span className="total-price">{totalPrice} SEK</span>
-//   </div>
+  return (
+    <ul className="order-list">
+      {items.map(({ id, name, price, quantity }) => (
+        <li key={id} className="order-item">
+          <span className="item-name">{name.toUpperCase()} × {quantity}</span>
+          <span className="dots"></span>
+          <span className="item-price">{price * quantity} SEK</span>
+          <div className="item-actions">
+            <button className="btn btn-qty" onClick={() => dispatch(decrementItem(id))}>−</button>
+            <button className="btn btn-qty" onClick={() => dispatch(addItem({ id, name, price }))}>+</button>
+            <button className="btn btn-remove" onClick={() => dispatch(removeItem(id))}>🗑</button>
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
-//   <button className="cart-order-btn" onClick={() => navigate('/order')}>
-//     TAKE MY MONEY!
-//   </button>
-// </div>
-//        </main>
-//   );
-// }
-
-// export default Cart;
+export default Cart;

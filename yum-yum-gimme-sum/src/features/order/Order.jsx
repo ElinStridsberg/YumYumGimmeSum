@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addItem, removeItem, decrementItem, clearCart } from '../cart/cartSlice';
+import { clearCart } from '../cart/cartSlice';
 import { useNavigate } from 'react-router-dom';
 import { useCreateTenantMutation, usePlaceOrderMutation } from '../tenant/tenantSlice';
+import Cart from '../cart/Cart';
 
 function Order() {
   const items = useSelector(state => state.cart.items);
@@ -63,18 +64,20 @@ function Order() {
 
   if (items.length === 0) {
     return (
-    <main className="order-wrapper">
-      <div className="empty-cart">
-        <h2>Din varukorg är tom.</h2>
-        <p>Gå tillbaka till menyn</p>
-        <img src="/arrow.png" alt="Tom varukorg" className='arrowEmptyCart'           onClick={() => navigate('/menu')}
-        />
-
-      </div>
-    </main>
-
-        );
-      }
+      <main className="order-wrapper">
+        <div className="empty-cart">
+          <h2>Din varukorg är tom.</h2>
+          <p>Gå tillbaka till menyn</p>
+          <img
+            src="/arrow.png"
+            alt="Tom varukorg"
+            className="arrowEmptyCart"
+            onClick={() => navigate('/menu')}
+          />
+        </div>
+      </main>
+    );
+  }
 
   const totalPrice = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
@@ -84,22 +87,9 @@ function Order() {
         <img src="/arrow.png" alt="Tillbaka" className="nav-icon left" onClick={() => navigate('/menu')} />
         <img src="/cart-icon.png" alt="Varukorg" className="nav-icon right" />
       </div>
-      <ul className="order-list">
-        {items.map(({ id, name, price, quantity }) => (
-          <li key={id} className="order-item">
-            <span className="item-name">
-            {name.toUpperCase()} × {quantity}            
-            </span>
-            <span className="dots"></span>
-            <span className="item-price">{price * quantity} SEK</span>
-            <div className="item-actions">
-              <button className="btn btn-qty" onClick={() => dispatch(decrementItem(id))}>−</button>
-              <button className="btn btn-qty" onClick={() => dispatch(addItem({ id, name, price }))}>+</button>
-              <button className="btn btn-remove" onClick={() => dispatch(removeItem(id))}>🗑</button>
-            </div>
-          </li>
-        ))}
-      </ul>
+
+      <Cart items={items} />
+
       <div className="order-footer">
         <div className="order-total-bar">
           <span>TOTALT</span>

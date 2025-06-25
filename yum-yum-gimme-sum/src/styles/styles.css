@@ -175,6 +175,7 @@ main > h1 {
   z-index: 1;
   padding: 0 0.3rem;
   white-space: nowrap;
+  text-shadow: 1px 1px 1px #666565;
 }
 .simple-grid {
   display: flex;
@@ -361,7 +362,7 @@ main {
   z-index: 1;
   padding: 0 0.3rem;
   white-space: nowrap;
-  text-shadow: 1px 1px 1px #000;
+  text-shadow: 1px 1px 1px #666565;
 }
 
 .menu-name {
@@ -379,7 +380,6 @@ main {
   font-weight: 700;
   font-size: 1.1rem;
   z-index: 1;
-  background-color: #616060;
   padding-left: 0.5rem;
 }
 
@@ -400,7 +400,6 @@ main {
   margin: 0; 
   font-size: 0.7rem;
   color: #ddd;
-  text-shadow: 1px 1px 1px #3e3e3e;
   font-weight: 300; 
   letter-spacing: -0.3px; 
 }
@@ -569,8 +568,8 @@ main {
 
 .receipt-box {
   background-color: #EEEEEE;
-  padding: 2rem 1.5rem;
-  border-radius: 6px 6px 0 0; 
+  padding: 2rem 1rem;
+  border-radius: 4px 4px 0 0; 
   width: 100%;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   margin-top: 7rem;
@@ -661,7 +660,7 @@ main {
   max-width: 360px;
   background-color: #bcbbbb;
   padding: 1rem 1.2rem;
-  border-radius: 0 0 6px 6px;
+  border-radius: 0 0 3px 3px;
   margin-top: -2px;
   margin-bottom: 7rem;
   box-sizing: border-box;
@@ -818,7 +817,7 @@ main {
 .eta-btn {
   padding: 1rem;
   font-size: 0.9rem;
-  border-radius: 6px;
+  border-radius: 2px;
   font-weight: bold;
   letter-spacing: 0.5px;
   text-transform: uppercase;
